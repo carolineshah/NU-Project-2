@@ -1,0 +1,23 @@
+-- Create tables for raw data to be loaded into
+CREATE TABLE movie_titles(
+id TEXT PRIMARY KEY,
+title TEXT,
+genres TEXT,
+director TEXT,
+rating TEXT,
+imdb_rating INT
+);
+
+CREATE TABLE imdb_data(
+id TEXT PRIMARY KEY,
+avg_rating INT,
+total_reviews INT,
+total_spoilers INT
+);
+
+-- Joins tables
+SELECT movie_titles.id, movie_titles.title, movie_titles.genres, movie_titles.director, movie_titles.rating, movie_titles.imdb_rating,
+imdb_data.avg_rating, imdb_data.total_reviews, imdb_data.total_spoilers
+FROM movie_titles
+JOIN imdb_data
+ON movie_titles.id = imdb_data.id;
